@@ -11,7 +11,7 @@ public class DriverFactory {
 
     public static WebDriver initDriver() throws IOException {
         WebDriver driver = null;
-        String browserType = "Chrome"; //System.getProperty("Browser");
+        String browserType = System.getProperty("Browser");
         if (browserType.equalsIgnoreCase("chrome")) {
             driver = new ChromeDriver();
         } else if (browserType.equalsIgnoreCase("firefox")) {

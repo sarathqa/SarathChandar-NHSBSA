@@ -4,7 +4,7 @@ Feature: Test NHS Job Search functionality
     Given JobSeeker landed on NHS Job Portal
 
   @Smoke  @Regression @Sanity
-  Scenario Outline: JobSeeker search the jobs with Job title preference in NHS Job portal and should be able to sort with Newest date posted
+  Scenario Outline: JobSeeker searches jobs by Job title on NHS portal, sorts results by newest date posted, and verifies that job listings should be displayed with the most recent postings with their preference.
     And Enter "<JobTitle>" keyword in the Job Title field
     And Click search button
     Then Verify that Jobseeker should be able to see the list of jobs based on "<JobTitle>" keyword
@@ -17,13 +17,13 @@ Feature: Test NHS Job Search functionality
 
 
   @Regression
-  Scenario: JobSeeker search the jobs without any preference in NHS Job portal and should be able to sort with Newest date posted
+  Scenario: JobSeeker searches jobs without any preference on NHS portal, sorts results by newest date posted, and verifies that job listings should be displayed with the most recent postings.
     And Click search button
     Then Verify that Jobseeker should be able to see the list of jobs based on "jobs found" keyword
     And Sort the result with "Date Posted (newest)"
 
   @Regression @Sanity
-  Scenario Outline: JobSeeker search the jobs with multiple preference in NHS Job portal and should be able to sort with Newest date posted
+  Scenario Outline: JobSeeker searches jobs with multiple preference on NHS portal, sorts results by newest date posted, and verifies that job listings should be displayed with the most recent postings with their preference.
     And Enter "<JobTitle>" keyword in the Job Title field
     And Enter "<JobLoc>" keyword in the Job location field
     And Click search button
@@ -35,13 +35,13 @@ Feature: Test NHS Job Search functionality
       | Automation Test Analyst | Liverpool | Date Posted (newest) |
 
   @Regression
-  Scenario: JobSeeker search the jobs with invalid input in NHS Job portal and should not be able to find the job
+  Scenario: JobSeeker searches jobs with invalid data on NHS portal and verifies that No Jobs should be listed in the portal
     And Enter "12345" keyword in the Job Title field
     And Click search button
     Then Verify that Jobseeker should be able to see the list of jobs based on "No result found" keyword
 
   @Smoke  @Regression
-  Scenario Outline: JobSeeker search the jobs with location preference in NHS Job portal and should be able to see all distance
+  Scenario Outline: JobSeeker searches jobs by Job location on NHS portal, sorts results by newest date posted, and verifies that job listings should be displayed with the most recent postings with their preference.
     Then Verify that distance drop down should be "disabled"
     And Enter "<JobLoc>" keyword in the Job location field
     Then Verify that distance drop down should be "enabled"
@@ -56,7 +56,7 @@ Feature: Test NHS Job Search functionality
       | Lock Hill, Grimsby | +20 Miles | Date Posted (newest) |
 
   @Regression
-  Scenario: JobSeeker search the jobs with all preference and should be able to reset all preference data by clicking clear filter button
+  Scenario: JobSeeker enter the details in NHS portal and should be able to reset the details by clicking clear filter button
     And Enter "Automation Test Analyst" keyword in the Job Title field
     And Enter "Lock Hill, Grimsby" keyword in the Job location field
     And Select "+20 Miles" distance
@@ -70,7 +70,7 @@ Feature: Test NHS Job Search functionality
     Then Verify that Job Reference, Employer and Pay fields should be displayed and enabled
 
   @Regression
-  Scenario Outline: JobSeeker search the jobs with employer and Pay preference in NHS Job portal and should be able to sort with Newest date posted and verify that Job reference, Employer and pay range field should be displayed
+  Scenario Outline: JobSeeker searches jobs by Employer and Pay on NHS portal, sorts results by newest date posted, and verifies that job listings should be displayed with the most recent postings with their preference.
     And Click More Search options link
     And Enter "<Employer>" keyword in the Employer field
     And Select "<Pay>" in the Pay Range field
@@ -81,6 +81,6 @@ Feature: Test NHS Job Search functionality
       | NHS Business Service Authority | £10,000 to £20,000 |
 
   @Smoke @Regression
-  Scenario: JobSeeker switch to the Cymraeg language and verify that label name of all fields should be displayed in that language
+  Scenario: JobSeeker switch to the Cymraeg language and verify that label name of all fields should be displayed in Cymraeg language
     And Click Cymraeg language
     Then Verify that Label name of Job Reference, Job Location and distance should be displayed in Cymraeg
